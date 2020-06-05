@@ -3,8 +3,13 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import moment from 'moment'
 
 Vue.config.productionTip = false
+
+Vue.filter('humanize', function(date: Date) {
+  return moment(date).format('MMMM Do YYYY');
+});
 
 new Vue({
   router,

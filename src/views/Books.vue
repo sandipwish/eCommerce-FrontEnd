@@ -1,7 +1,11 @@
 <template>
   <div class="book-container">
     <h1>My Books</h1>
-     <book :book="book" v-for="book in mybooks" :key="book.id" />
+     <book 
+     @deleted="getAllBooks"
+     :book="book" 
+     v-for="book in mybooks" 
+     :key="book.id" />
   </div>
 </template>
 
@@ -25,12 +29,17 @@
         get bookCount(){
             return this.mybooks.length;
         }
+
+        getAllBooks() {
+            bookService.getAllBooks().then(res => this.mybooks = res)
+           .catch(err => console.error(err))
+        }
+
         //prop
         //methods
         //lifecycle hooks
         created(){
-           bookService.getAllBooks().then(res => this.mybooks = res)
-           .catch(err => console.error(err))
+           this.getAllBooks()
         }
         //watchers
     }
