@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import moment from 'moment'
+import "@storefront-ui/vue/styles.scss";
 
 Vue.config.productionTip = false
 
